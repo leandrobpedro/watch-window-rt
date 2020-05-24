@@ -1,0 +1,6 @@
+# cache files
+*.e3i
+*.e3o
+
+# png images
+image/*.png
