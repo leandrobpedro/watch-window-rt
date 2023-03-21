@@ -4,3 +4,9 @@
 
 # png images
 image/*.png
+
+# example
+example.prj
+
+# domain file
+*.dom
