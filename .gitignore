@@ -10,3 +10,7 @@ example.prj
 
 # domain file
 *.dom
+
+# log
+*.txt
+
