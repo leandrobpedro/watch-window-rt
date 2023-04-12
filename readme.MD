@@ -1,14 +1,31 @@
-## Instalação
-- Registrar `mscomctl.ocx` e `PropertyEnum.dll`
-	- Abrir o `prompt` como administrador.
-	- Copiar os arquivos para o diretório `c:\windows\system32\`
-	- `C:\Windows\system32>regsvr32 mscomctl.ocx`
-	- `C:\Windows\system32>regsvr32 PropertyEnum.dll`
+# Watch Window (Runtime)
+Uma Watch Window para Elipse E3/Power para acesso em modo de execução
 
-## Configuração
-- Adicionar `watchwindow.prj` e `watchwindow.lib` ao domínio.
-- Adicionar o botão que chama a _WatchWindow_, para isso pode ser usado o `XControl` contido na .lib, ou conforme o _script_:
+### Instalação
+- Registrar `mscomctl.ocx` e `PropertyEnum[64].dll`
+	- Abrir o `prompt` como administrador.
+	- Registrar a `dll` compatível com a arquitetura do sistema operacional
+	<br><br>
+	```bat
+	rem mscomctl
+	regsvr32.exe caminho\para\mscomctl.ocx
+
+	rem x86
+	regsvr32.exe caminho\para\PropertyEnum.dll
+	
+	rem x64
+	regsvr32.exe caminho\para\PropertyEnum64.dll
+	```
+
+### Configuração
+- Adicionar `watchwindow_rt.prj` e `watchwindow_rt.lib` ao domínio.
+- Adicionar o botão que chama a _WatchWindow_, para isso pode ser usado o `XControl` contido na biblioteca, ou conforme o _script_:
 ```vbscript
-	Dim flag : flag = 1 + 2 + 16 + 64 + 2048
-	Application.DoModal "WatchWindow??0", , , , , , , flag
+Sub btn_Click()
+  Dim lFlag
+  lFlag = 1 + 2 + 16 + 64 + 2048
+  
+  ' Chama a tela modal
+  Application.DoModal "WatchWindowRT??0", , , , , , , lFlag
+End Sub
 ```
